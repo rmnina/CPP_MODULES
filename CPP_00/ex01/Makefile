@@ -6,7 +6,7 @@
 #    By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 16:52:34 by jdufour           #+#    #+#              #
-#    Updated: 2024/04/25 16:53:00 by jdufour          ###   ########.fr        #
+#    Updated: 2024/04/25 23:15:18 by jdufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = phonebook
 
 SRC_DIR = src
 
-SRCS = $(addprefix $(SRC_DIR)/, phonebook.cpp)
+SRCS = $(addprefix $(SRC_DIR)/, phonebook.cpp contact.cpp main.cpp)
 
 OBJ_DIR = obj
 
