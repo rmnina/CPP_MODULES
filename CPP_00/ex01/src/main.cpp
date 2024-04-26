@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:02:27 by jdufour           #+#    #+#             */
-/*   Updated: 2024/04/26 00:50:38 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/04/26 15:46:02 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,17 @@
 #include <string>
 #include <iostream>
 
+// PENSER AU CTRL+D
+
 void	add_contact(PhoneBook *phonebook, int *i)
 {
 	phonebook->contacts[*i].fill_contact();
+	(*i)++;
+}
+
+void	search_contact(PhoneBook *phonebook, int *i)
+{
+	phonebook->contacts[*i].get_contact();
 	(*i)++;
 }
 
@@ -27,9 +35,9 @@ int main(void)
 	int			i;
 	
 	i = 0;
+	std::cout << "Phonebook > ";
 	do
 	{
-		std::cout << "Phonebook > ";
 		std::getline(std::cin, request);
 		if (!request.compare("SEARCH"))
 			std::cout << "not found..." << std::endl;
@@ -37,6 +45,8 @@ int main(void)
 			add_contact(&phonebook, &i);
 		else if (!request.compare("EXIT"))
 			break;
+		else
+			std::cout << "Phonebook > ";
 	} while (request.compare("EXIT"));
 	return (0);
 }
