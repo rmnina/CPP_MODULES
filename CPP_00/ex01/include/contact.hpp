@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:00:31 by jdufour           #+#    #+#             */
-/*   Updated: 2024/04/26 00:49:34 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/04/28 19:13:44 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ class Contact
 {
 	public:
 
-	Contact(void);
-	void	add_data(std::string display, std::string *field);
-	void	fill_contact(void);
-	~Contact(void);
+	int		add_data(std::string display, std::string *field);
+	int		fill_contact(void);
+	void	get_contact();
+	void	get_list_info();
+	void	reset_contact();
 
 	private:
 

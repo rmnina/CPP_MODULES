@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:53:36 by jdufour           #+#    #+#             */
-/*   Updated: 2024/04/26 00:41:14 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/04/28 16:58:41 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class PhoneBook
 	public:
 	
 	Contact contacts[8];
+	void	print_list(int *i);
 };
 
 #endif
