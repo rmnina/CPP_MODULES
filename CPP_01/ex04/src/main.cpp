@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 00:44:01 by jdufour           #+#    #+#             */
-/*   Updated: 2024/04/29 02:46:16 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/04/29 04:13:11 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	create_infile(std::string filename, std::ifstream *file)
 	file->open(cstr);
 	if (!file->is_open())
 	{
-		std::cerr << "Error : file " << filename << " could not be opened" << std::endl;
+		std::cerr << "Error : file '" << filename << "' could not be opened" << std::endl;
 		return (1);
 	}
 	return (0);
@@ -40,7 +40,7 @@ int	create_outfile(std::string filename, std::ofstream *new_file)
 	new_file->open(new_cstr);
 	if (!new_file->is_open())
 	{
-		std::cerr << "Error : file " << new_filename << " could not be opened" << std::endl;
+		std::cerr << "Error : file '" << new_filename << "' could not be opened" << std::endl;
 		return (1);
 	}
 	return (0);
@@ -85,8 +85,13 @@ int main(int argc, char **argv)
 	}
 	s1 = argv[2];
 	s2 = argv[3];
-	create_infile((std::string)argv[1], &file);
-	create_outfile((std::string)argv[1], &outfile);
+	if (create_infile((std::string)argv[1], &file))
+		return (1);
+	if (create_outfile((std::string)argv[1], &outfile))
+	{
+		file.close();
+		return (1);
+	}
 	ft_sed(&file, &outfile, s1, s2);
 	file.close();
 	outfile.close();
