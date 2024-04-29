@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 03:31:04 by jdufour           #+#    #+#             */
-/*   Updated: 2024/04/29 04:05:58 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/04/29 04:08:31 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ void	Harl::complain(std::string level)
         default:
            	std::cout << ITALIC << "[ Probably complaining about insignificant problems ]";
             std::cout << RESET << std::endl;
-        
-	}
-
+    }
 }
 
 void	Harl::_debug(void)
