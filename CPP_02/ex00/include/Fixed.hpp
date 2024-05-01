@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 22:12:34 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/01 23:45:02 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/01 23:56:30 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ public:
     Fixed( void);
     Fixed( const Fixed &src);
 
-    int getRawBits( void);
+    int getRawBits( void) const;
 
-    Fixed & operator=( const Fixed & src);
+    Fixed & operator=( Fixed const &src);
     ~Fixed();
 };
 
