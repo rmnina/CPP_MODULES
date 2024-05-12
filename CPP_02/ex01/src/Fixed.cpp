@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 23:59:50 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/02 00:49:21 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/12 15:59:38 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,13 @@ Fixed::Fixed( const Fixed &src)
 Fixed::Fixed( const int src)
 {
     std::cout << "Int constructor called" << std::endl;
-    if (src > 0)
-        this->_value = src * (1 << this->_bits) + 0.5;
-    else
-        this->_value = src * (1 << this->_bits) - 0.5;
+    this->_value = roundf(src * (1 << this->_bits));
 }
 
 Fixed::Fixed( const float src)
 {
     std::cout << "Float constructor called" << std::endl;
-    if (src > 0)
-        this->_value = src * (1 << this->_bits) + 0.5;
-    else
-        this->_value = src * (1 << this->_bits) - 0.5;
+    this->_value = roundf(src * (1 << this->_bits));
 }
 
 float   Fixed::toFloat( void) const
