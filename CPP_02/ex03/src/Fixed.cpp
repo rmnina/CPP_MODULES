@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:34:12 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/12 16:15:02 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/14 04:20:05 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,37 +67,37 @@ Fixed    Fixed::max(Fixed const &a, Fixed const &b)
     return (a > b ? a : b);
 }
 
-Fixed & Fixed::operator=( Fixed const &src)
+Fixed & Fixed::operator=( Fixed const &rhs)
 {
-    this->_value = src.getRawBits();
+    this->_value = rhs.getRawBits();
     return (*this);
 }
 
-std::ostream & operator<<(std::ostream &os, const Fixed &src)
+std::ostream & operator<<(std::ostream &os, const Fixed &rhs)
 {
-    os << src.toFloat();
+    os << rhs.toFloat();
     return (os);
 }
 
-Fixed Fixed::operator+( Fixed const &src)
+Fixed Fixed::operator+( Fixed const &rhs)
 {
-    return (this->toFloat() + src.toFloat());
+    return (this->toFloat() + rhs.toFloat());
 }
 
-Fixed Fixed::operator-( Fixed const &src)
+Fixed Fixed::operator-( Fixed const &rhs)
 {
-    return (this->toFloat() - src.toFloat());
+    return (this->toFloat() - rhs.toFloat());
 }
 
-Fixed Fixed::operator*( Fixed const &src)
+Fixed Fixed::operator*( Fixed const &rhs)
 {
-    return (this->toFloat() * src.toFloat());
+    return (this->toFloat() * rhs.toFloat());
 }
 
-Fixed Fixed::operator/( Fixed const &src)
+Fixed Fixed::operator/( Fixed const &rhs)
 {
-    if (src.toFloat() != 0)
-        return (this->toFloat() / src.toFloat());
+    if (rhs.toFloat() != 0)
+        return (this->toFloat() / rhs.toFloat());
     else
 	{
         std::cerr << "Error : div by 0. Operation has failed" << std::endl;
@@ -105,34 +105,34 @@ Fixed Fixed::operator/( Fixed const &src)
 	}
 }
 
-bool Fixed::operator<( Fixed const &src) const
+bool Fixed::operator<( Fixed const &rhs) const
 {
-    return (this->_value < src._value);
+    return (this->_value < rhs._value);
 }
 
-bool Fixed::operator>( Fixed const &src) const
+bool Fixed::operator>( Fixed const &rhs) const
 {
-    return (this->_value > src._value);
+    return (this->_value > rhs._value);
 }
 
-bool Fixed::operator<=( Fixed const &src) const
+bool Fixed::operator<=( Fixed const &rhs) const
 {
-    return (this->_value <= src._value);
+    return (this->_value <= rhs._value);
 }
 
-bool Fixed::operator>=( Fixed const &src) const
+bool Fixed::operator>=( Fixed const &rhs) const
 {
-    return (this->_value >= src._value);
+    return (this->_value >= rhs._value);
 }
 
-bool Fixed::operator==( Fixed const &src) const
+bool Fixed::operator==( Fixed const &rhs) const
 {
-    return (this->_value == src._value);
+    return (this->_value == rhs._value);
 }
 
-bool Fixed::operator!=( Fixed const &src) const
+bool Fixed::operator!=( Fixed const &rhs) const
 {
-    return (this->_value != src._value);
+    return (this->_value != rhs._value);
 }
 
 Fixed & Fixed::operator++( void)

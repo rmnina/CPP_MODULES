@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 22:12:34 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/14 04:14:38 by jdufour          ###   ########.fr       */
+/*   Created: 2024/05/14 03:33:09 by jdufour           #+#    #+#             */
+/*   Updated: 2024/05/14 03:40:08 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#include "../include/Brain.hpp"
 
-# include <string>
-# include <iostream>
-
-class Fixed
+Brain::Brain( void)
 {
-private:
-    int                 _value;
-    static const int    _bits = 8;
-    
-public:
-    Fixed( void);
-    Fixed( const Fixed &src);
+	std::cout << ITALIC << "Brain constructor called" << RESET << std::endl;
+}
 
-    int getRawBits( void) const;
+Brain::Brain( const Brain &src)
+{
+	*this = src;
+}
 
-    Fixed & operator=( Fixed const &rhs);
-    ~Fixed();
-};
+Brain	&Brain::operator=( const Brain &rhs)
+{
+	for (int i = 0; i < 100; i++)
+	{
+		this->_ideas[i] = rhs._ideas[i];
+	}
+	return (*this);
+}
 
-#endif
+Brain::~Brain( void)
+{
+	std::cout << ITALIC << "Brain destructor called" << std::endl;
+}

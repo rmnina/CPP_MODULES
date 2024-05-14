@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 22:12:34 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/14 04:14:38 by jdufour          ###   ########.fr       */
+/*   Created: 2024/05/13 01:05:38 by jdufour           #+#    #+#             */
+/*   Updated: 2024/05/14 03:46:10 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#include "../include/Dog.hpp"
+#include "../include/Cat.hpp"
 
-# include <string>
-# include <iostream>
-
-class Fixed
+int main()
 {
-private:
-    int                 _value;
-    static const int    _bits = 8;
-    
-public:
-    Fixed( void);
-    Fixed( const Fixed &src);
+	Animal	AnimalTab[10];
 
-    int getRawBits( void) const;
+	for (int i = 0; i < 5; i++)
+		AnimalTab[i] = new Dog();
+	
 
-    Fixed & operator=( Fixed const &rhs);
-    ~Fixed();
-};
-
-#endif
+	return (0);
+}

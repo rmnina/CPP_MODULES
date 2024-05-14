@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:25:30 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/12 21:30:57 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/14 04:20:36 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ Point::Point( const float a, const float b)
 	this->_y = b;
 }
 
-Point::Point( const Point &rhs)
+Point::Point( const Point &src)
 {
-	*this = rhs;
+	*this = src;
 }
 
 Fixed	Point::get_x( void) const

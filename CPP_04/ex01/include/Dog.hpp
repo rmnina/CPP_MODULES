@@ -1,49 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 16:25:05 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/14 04:20:25 by jdufour          ###   ########.fr       */
+/*   Created: 2024/05/13 01:05:27 by jdufour           #+#    #+#             */
+/*   Updated: 2024/05/14 03:41:48 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
+
 
 # include <string>
 # include <iostream>
-# include <cmath>
-# include "Fixed.hpp"
+# include "Animal.hpp"
+# include "Brain.hpp"
 
-# define GREEN	"\x1b[32m"
-# define RED	"\x1b[31m"
-# define BOLD	"\x1b[1m"
-# define RESET	"\x1b[0m"
-
-class Point
+class Dog : public Animal 
 {
-	
+
 private:
-	Fixed	_x;
-	Fixed	_y;
+	Brain	*_brain;
 
 public:
-	Point( void);
-	Point( const float a, const float b);
-	Point( const Point &src);
 
-	Fixed	get_x( void) const;
-	Fixed	get_y( void) const;
+	Dog( void);
+	Dog( const Dog &src);
+	
+	void		makeSound( void) const;
+	std::string	getType( void) const;
 
-	Point	& operator=( Point const &rhs);
-	
-	~Point( void);
-	
+	Dog	&operator=( const Dog &rhs);
+
+	~Dog( void);
+
 };
 
-bool	bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif
