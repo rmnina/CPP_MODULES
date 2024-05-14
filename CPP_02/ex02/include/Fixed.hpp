@@ -6,16 +6,16 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:33:49 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/12 16:11:59 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/12 20:55:55 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 # include <string>
 # include <iostream>
 # include <cmath>
-
-#ifndef FIXED_HPP
-# define FIXED_HPP
 
 class Fixed
 {
@@ -55,6 +55,7 @@ public:
     Fixed operator++( int);
     Fixed & operator--( void);
     Fixed operator--( int);
+    
     ~Fixed();
 };
 
