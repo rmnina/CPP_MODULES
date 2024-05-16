@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 01:06:03 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 21:25:55 by jdufour          ###   ########.fr       */
+/*   Created: 2024/05/13 01:06:10 by jdufour           #+#    #+#             */
+/*   Updated: 2024/05/16 21:32:10 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Cat.hpp"
+#include "../include/Dog.hpp"
 
-Cat::Cat( void) : Animal()
+Dog::Dog( void) : AAnimal()
 {
-	std::cout << ITALIC ORANGE << "Cat constructor called" << RESET << std::endl;
-	this->_type = "Cat";
+	std::cout << ITALIC BLUE << "Dog constructor called" << RESET << std::endl;
+	this->_type = "Dog";
 	this->_brain = new Brain();
 	for (int i = 0; i < 100; i++)
-		this->_brain->set_idea(&i, "Miiiiaaoouuuuuuu");
+		this->_brain->set_idea(&i, "Ouaf ouaf !!!");
 }
 
-Cat	&Cat::operator=( const Cat &rhs)
+Dog::Dog( const Dog &src) : AAnimal( src)
+{
+	*this = src;
+}
+
+Dog	&Dog::operator=( const Dog &rhs)
 {
 	this->_type = rhs._type;
 	this->_brain = rhs._brain;
@@ -30,33 +35,28 @@ Cat	&Cat::operator=( const Cat &rhs)
 	return (*this);
 }
 
-Cat::Cat( const Cat &src) : Animal( src)
-{
-	*this = src;
-}
-
-std::string	Cat::getType( void) const
+std::string	Dog::getType( void) const
 {
 	return (this->_type);
 }
 
-void	Cat::set_idea( int *i, const std::string idea)
+void	Dog::set_idea( int *i, const std::string idea)
 {
 	this->_brain->set_idea(i, idea);
 }
 
-std::string	Cat::get_idea( int *i) const
+std::string	Dog::get_idea( int *i) const
 {
 	return (this->_brain->get_idea(i));
 }
 
-void	Cat::makeSound( void) const
+void	Dog::makeSound( void) const
 {
-	std::cout << ORANGE << this->_type << " : Miiiaaaouuuuuu" << RESET << std::endl;
+	std::cout << BLUE << this->_type << " : Ouaf Ouaf !!" << RESET << std::endl;
 }
 
-Cat::~Cat( void)
+Dog::~Dog( void)
 {
-	std::cout << ITALIC ORANGE << "Cat destructor called" << RESET << std::endl;
+	std::cout << ITALIC BLUE << "Dog destructor called" << RESET << std::endl;
 	delete this->_brain;
 }

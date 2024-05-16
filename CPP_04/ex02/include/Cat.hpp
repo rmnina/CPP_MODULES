@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 01:05:27 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 21:25:55 by jdufour          ###   ########.fr       */
+/*   Created: 2024/05/13 01:05:24 by jdufour           #+#    #+#             */
+/*   Updated: 2024/05/16 21:32:55 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
-
+#ifndef CAT_HPP
+# define CAT_HPP
 
 # include <string>
 # include <iostream>
 # include "Animal.hpp"
 # include "Brain.hpp"
 
-class Dog : public Animal 
+class Cat : public AAnimal
 {
 
 private:
@@ -27,19 +26,18 @@ private:
 
 public:
 
-	Dog( void);
-	Dog( const Dog &src);
+	Cat( void);
+	Cat( const Cat &src);
 	
 	void		makeSound( void) const;
 	std::string	getType( void) const;
 	void		set_idea( int *i, const std::string idea);
 	std::string	get_idea( int *i) const;
+	
+	Cat	&operator=( const Cat &rhs);
 
-	Dog	&operator=( const Dog &rhs);
-
-	~Dog( void);
+	~Cat( void);
 
 };
-
 
 #endif

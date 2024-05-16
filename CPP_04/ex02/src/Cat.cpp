@@ -6,13 +6,13 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 01:06:03 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 21:25:55 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/16 21:32:18 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Cat.hpp"
 
-Cat::Cat( void) : Animal()
+Cat::Cat( void) : AAnimal()
 {
 	std::cout << ITALIC ORANGE << "Cat constructor called" << RESET << std::endl;
 	this->_type = "Cat";
@@ -30,7 +30,7 @@ Cat	&Cat::operator=( const Cat &rhs)
 	return (*this);
 }
 
-Cat::Cat( const Cat &src) : Animal( src)
+Cat::Cat( const Cat &src) : AAnimal( src)
 {
 	*this = src;
 }

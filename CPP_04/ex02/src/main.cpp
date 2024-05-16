@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 01:05:38 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 21:25:55 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/16 21:33:51 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 int main()
 {
-	Animal	*AnimalTab[10];
-	int		i = 0;
+	AAnimal	*AnimalTab[10];
 
 	std::cout << BOLD << "Instantiate Dog and Cat classes via pointers to Animal. ";
 	std::cout << "Animal, Dog, Cat and Brain constructors should be called." << RESET << std::endl;
@@ -37,26 +36,11 @@ int main()
 		delete AnimalTab[i];
 	std::cout << std::endl;
 
-	
-	std::cout << BOLD << "Instantiate Dogs and Cat directly on stack" << RESET << std::endl; 
-	Dog	dog;
-	Cat	cat;
+	std::cout << BOLD << "Uncomment the last lines in main to try to instanciate AAnimal alone." << std::endl;
+	std::cout << "The compiler won't accept it." << RESET << std::endl;
 
-	std::cout << std::endl;
-	std::cout << BLUE << "Dog first idea : " << dog.get_idea( &i) << RESET << std::endl;
-	std::cout << "Modifing dog first idea..." << std::endl;
-	dog.set_idea( &i, "I am a dog !!");
-	std::cout << BLUE << "Dog new first idea : " << dog.get_idea( &i) << RESET << std::endl;
-	i = 99;
-	std::cout << BLUE << "Dog last idea : " << dog.get_idea( &i) << std::endl << RESET << std::endl;
+	// AAnimal animal;
+	// animal.makeSound();
 
-	i = 0;
-	std::cout << ORANGE << "Cat first idea : " << cat.get_idea( &i) << RESET << std::endl;
-	std::cout << "Modifing cat first idea..." << std::endl;
-	cat.set_idea( &i, "I am a cat !!");
-	std::cout << ORANGE << "Cat new first idea : " << cat.get_idea( &i) << RESET << std::endl;
-	i = 99;
-	std::cout << ORANGE << "Cat last idea : " << cat.get_idea( &i) << RESET << std::endl << std::endl;
-	// delete[] AnimalTab;
 	return (0);
 }

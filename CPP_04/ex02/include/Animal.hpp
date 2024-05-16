@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 03:29:40 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 19:41:49 by jdufour          ###   ########.fr       */
+/*   Created: 2024/05/13 01:05:30 by jdufour           #+#    #+#             */
+/*   Updated: 2024/05/16 21:36:00 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
 # include <string>
 # include <iostream>
@@ -29,22 +29,25 @@
 # define BOLD		"\x1b[1m"
 # define ITALIC		"\x1b[3m"
 
-class Brain
+class AAnimal 
 {
 
 protected:
-	std::string	_ideas[100];
+
+	std::string _type;
 
 public:
-	Brain( void);
-	Brain( const Brain &src);
 
-	void		set_idea( int *i, const std::string idea);
-	std::string	get_idea( int *i) const;
+	AAnimal( void);
+	AAnimal( const AAnimal &src);
 	
-	Brain	&operator=( const Brain &rhs);
+	virtual void		makeSound( void) const = 0;
+	virtual std::string	getType( void) const;
+	
+	AAnimal	&operator=(const AAnimal &rhs);
 
-	~Brain( void);
+	virtual ~AAnimal( void);	
 };
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 01:05:27 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 21:25:55 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/16 21:33:01 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "Animal.hpp"
 # include "Brain.hpp"
 
-class Dog : public Animal 
+class Dog : public AAnimal 
 {
 
 private:

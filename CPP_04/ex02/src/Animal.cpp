@@ -1,45 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 01:05:45 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 21:37:08 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/14 03:22:19 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Animal.hpp"
 
-Animal::Animal( void)
+AAnimal::AAnimal( void)
 {
-	std::cout << ITALIC YELLOW << "Animal constructor called" << RESET << std::endl;
+	std::cout << ITALIC YELLOW << "AAnimal constructor called" << RESET << std::endl;
 	this->_type = "notype";
 }
 
-Animal::Animal( const Animal &src)
+AAnimal::AAnimal( const AAnimal &src)
 {
 	*this = src;
 }
 
-Animal &Animal::operator=( const Animal &rhs)
+AAnimal &AAnimal::operator=( const AAnimal &rhs)
 {
 	this->_type = rhs._type;
 	return (*this);
 }
 
-std::string	Animal::getType( void) const
+std::string	AAnimal::getType( void) const
 {
 	return this->_type;
 }
 
-void	Animal::makeSound( void) const
+void	AAnimal::makeSound( void) const
 {
-	std::cout << YELLOW << this->_type << " : Chaotic and undetermined animal noises" << RESET << std::endl;
+	std::cout << YELLOW << this->_type << " : Chaotic and undetermined Aanimal noises" << RESET << std::endl;
 }
 
-Animal::~Animal( void)
+AAnimal::~AAnimal( void)
 {
-	std::cout << ITALIC YELLOW << "Animal destructor called" << RESET << std::endl;
+	std::cout << ITALIC YELLOW << "AAnimal destructor called" << RESET << std::endl;
 }

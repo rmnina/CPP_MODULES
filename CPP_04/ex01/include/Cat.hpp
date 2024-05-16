@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 01:05:24 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/14 03:41:44 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/05/16 21:25:55 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ public:
 	
 	void		makeSound( void) const;
 	std::string	getType( void) const;
+	void		set_idea( int *i, const std::string idea);
+	std::string	get_idea( int *i) const;
 	
 	Cat	&operator=( const Cat &rhs);
 
