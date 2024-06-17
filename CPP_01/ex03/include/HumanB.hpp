@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 23:36:46 by jdufour           #+#    #+#             */
-/*   Updated: 2024/04/29 00:09:39 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/06/17 12:53:16 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class HumanB
 public:
 
 	HumanB(std::string name);
-	void	setWeapon(Weapon weapon);
+	void	setWeapon(Weapon &weapon);
 	void	attack();
 
 private:

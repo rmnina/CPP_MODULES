@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 23:47:51 by jdufour           #+#    #+#             */
-/*   Updated: 2024/04/29 00:32:48 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/06/17 12:53:08 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 HumanB::HumanB(std::string name)
 {
-	this->_name = name;;
+	this->_name = name;
+	this->_weapon = NULL;
 }
 
-void	HumanB::setWeapon(Weapon weapon)
+void	HumanB::setWeapon(Weapon &weapon)
 {
-	*_weapon = weapon;
+	this->_weapon = &weapon;
 }
 
 void	HumanB::attack(void)
