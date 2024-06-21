@@ -24,7 +24,7 @@ Cat::Cat( void) : AAnimal()
 Cat	&Cat::operator=( const Cat &rhs)
 {
 	this->_type = rhs._type;
-	this->_brain = rhs._brain;
+	this->_brain = new Brain();
 	for (int i = 0; i < 100; i++)
 		this->_brain->set_idea(&i, rhs._brain->get_idea(&i));
 	return (*this);
