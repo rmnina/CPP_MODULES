@@ -18,15 +18,15 @@ Cat::Cat( void) : Animal()
 	this->_type = "Cat";
 }
 
-Cat::Cat( const Cat &src) : Animal( src)
-{
-	*this = src;
-}
-
 Cat	&Cat::operator=( const Cat &rhs)
 {
 	this->_type = rhs._type;
 	return (*this);
+}
+
+Cat::Cat( const Cat &src) : Animal( src)
+{
+	*this = src;
 }
 
 std::string	Cat::getType( void) const

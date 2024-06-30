@@ -18,15 +18,15 @@ WrongAnimal::WrongAnimal( void)
 	this->_type = "notype_wrong";
 }
 
-WrongAnimal::WrongAnimal( const WrongAnimal &src)
-{
-	*this = src;
-}
-
 WrongAnimal &WrongAnimal::operator=( const WrongAnimal &rhs)
 {
 	this->_type = rhs._type;
 	return (*this);
+}
+
+WrongAnimal::WrongAnimal( const WrongAnimal &src)
+{
+	*this = src;
 }
 
 std::string	WrongAnimal::getType( void) const

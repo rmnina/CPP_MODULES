@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 01:05:45 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 21:37:08 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/06/24 18:25:47 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Animal &Animal::operator=( const Animal &rhs)
 
 std::string	Animal::getType( void) const
 {
-	return this->_type;
+	return (this->_type);
 }
 
 void	Animal::makeSound( void) const

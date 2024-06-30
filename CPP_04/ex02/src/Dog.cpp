@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 01:06:10 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 21:32:10 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/06/24 18:26:17 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,28 @@ Dog::Dog( void) : AAnimal()
 		this->_brain->set_idea(&i, "Ouaf ouaf !!!");
 }
 
-Dog::Dog( const Dog &src) : AAnimal( src)
-{
-	*this = src;
-}
-
 Dog	&Dog::operator=( const Dog &rhs)
 {
-	this->_type = rhs._type;
-	this->_brain = rhs._brain;
-	for (int i = 0; i < 100; i++)
-		this->_brain->set_idea(&i, rhs._brain->get_idea(&i));
+	if (this != &rhs)
+	{
+		this->_type = rhs._type;
+		delete (this->_brain);
+		this->_brain = new Brain(*rhs._brain);
+		for (int i = 0; i < 100; i++)
+			this->_brain->set_idea(&i, rhs._brain->get_idea(&i));
+	}
 	return (*this);
+}
+
+Dog::Dog( const Dog &src) : AAnimal( src)
+{
+	if (this != &src)
+	{
+		this->_type = src._type;
+		this->_brain = new Brain(*src._brain);
+		for (int i = 0; i < 100; i++)
+			this->_brain->set_idea(&i, src._brain->get_idea(&i));
+	}
 }
 
 std::string	Dog::getType( void) const

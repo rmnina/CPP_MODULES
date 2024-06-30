@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 01:06:10 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/14 03:21:58 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/06/26 14:37:03 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,25 @@ Dog::Dog( void) : Animal()
 	this->_type = "Dog";
 }
 
-Dog::Dog( const Dog &src) : Animal( src)
-{
-	*this = src;
-}
-
 Dog	&Dog::operator=( const Dog &rhs)
 {
 	this->_type = rhs._type;
 	return (*this);
 }
 
+Dog::Dog( const Dog &src) : Animal( src)
+{
+	*this = src;
+}
+
 std::string	Dog::getType( void) const
 {
 	return (this->_type);
+}
+
+void	Dog::setType( std::string type)
+{
+	this->_type = type;
 }
 
 void	Dog::makeSound( void) const

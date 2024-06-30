@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 01:05:27 by jdufour           #+#    #+#             */
-/*   Updated: 2024/06/26 12:45:05 by jdufour          ###   ########.fr       */
+/*   Created: 2024/06/26 16:30:03 by jdufour           #+#    #+#             */
+/*   Updated: 2024/06/29 22:42:24 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
-
+#ifndef ICE_HPP
+# define ICE_HPP
 
 # include <string>
 # include <iostream>
-# include "Animal.hpp"
+# include "Materia.hpp"
 
-class Dog : public Animal 
+class Ice : public AMateria
 {
-
-public:
-
-	Dog( void);
-	Dog( const Dog &src);
+	private:
+		std::string	_type;
 	
-	void		makeSound( void) const;
-	std::string	getType( void) const;
-	void	setType( std::string type);
-
-	Dog	&operator=( const Dog &rhs);
-
-	~Dog( void);
-
+	
+	public:
+		Ice( void);
+		Ice( const Ice &src);
+		Ice	&operator=(const Ice &rhs);
+	
+		void		use(ICharacter &target);
+		AMateria	*clone( void) const;
+	
+		~Ice( void);
 };
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 01:06:03 by jdufour           #+#    #+#             */
-/*   Updated: 2024/05/16 21:32:18 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/06/24 18:26:08 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,26 @@ Cat::Cat( void) : AAnimal()
 
 Cat	&Cat::operator=( const Cat &rhs)
 {
-	this->_type = rhs._type;
-	this->_brain = rhs._brain;
-	for (int i = 0; i < 100; i++)
-		this->_brain->set_idea(&i, rhs._brain->get_idea(&i));
+	if (this != &rhs)
+	{
+		this->_type = rhs._type;
+		delete (this->_brain);
+		this->_brain = new Brain(*rhs._brain);
+		for (int i = 0; i < 100; i++)
+			this->_brain->set_idea(&i, rhs._brain->get_idea(&i));
+	}
 	return (*this);
 }
 
 Cat::Cat( const Cat &src) : AAnimal( src)
 {
-	*this = src;
+	if (this != &src)
+	{
+		this->_type = src._type;
+		this->_brain = new Brain(*src._brain);
+		for (int i = 0; i < 100; i++)
+			this->_brain->set_idea(&i, src._brain->get_idea(&i));
+	}
 }
 
 std::string	Cat::getType( void) const

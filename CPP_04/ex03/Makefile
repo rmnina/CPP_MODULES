@@ -6,15 +6,15 @@
 #    By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 01:04:11 by jdufour           #+#    #+#              #
-#    Updated: 2024/06/26 14:46:05 by jdufour          ###   ########.fr        #
+#    Updated: 2024/06/30 02:24:21 by jdufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Brain
+NAME = Materia
 
 SRC_DIR = src
 
-SRCS = $(addprefix $(SRC_DIR)/, main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp)
+SRCS = $(addprefix $(SRC_DIR)/, main.cpp Cure.cpp Materia.cpp Character.cpp Ice.cpp MateriaSource.cpp)
 
 OBJ_DIR = obj
 
