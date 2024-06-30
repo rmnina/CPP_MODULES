@@ -87,8 +87,8 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &rhs)
 	this->_hit_points = rhs._hit_points;
 	this->_attack_damage = rhs._attack_damage;
 	this->_energy_points = rhs._energy_points;
-	return (*this)
-};
+	return (*this);
+}
 
 ClapTrap::~ClapTrap( void)
 {

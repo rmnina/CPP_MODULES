@@ -28,6 +28,7 @@ public:
 
 	FragTrap	&operator=( const FragTrap &rhs);
 	void	get_highFives( void);
+	void    attack( const std::string &target);
 
 	~FragTrap( void);
 

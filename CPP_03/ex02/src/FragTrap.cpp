@@ -46,6 +46,21 @@ void    FragTrap::get_highFives( void)
     this->highFivesGuys();
 }
 
+void    FragTrap::attack( const std::string &target)
+{
+	if (this->_energy_points > 0 && this->_hit_points > 0)
+	{
+		std::cout << "FragTrap " << BOLD << this->_name << RED << " attacks ";
+		std::cout << RESET << BOLD << target << RESET << ", causing " << BOLD;
+		std::cout << this->_attack_damage << RESET << " points of damage!" << std::endl;
+		this->_energy_points--;
+	}
+	else if (this->_energy_points <= 0 && this->_hit_points > 0)
+		std::cout << BOLD << this->_name << " tried to attack " << target << ", but has no energy left..." << RESET << std::endl;
+	else
+		std::cout << BOLD << this->_name << " are dead, they cannot attack " << target << " :(" << RESET << std::endl;
+}
+
 FragTrap	&FragTrap::operator=(const FragTrap &rhs)
 {
 	this->_name = rhs._name;

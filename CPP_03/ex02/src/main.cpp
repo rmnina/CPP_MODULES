@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/FragTrap.hpp"
+#include "../include/ScavTrap.hpp"
 
 int main(void)
 {
@@ -22,7 +23,8 @@ int main(void)
     y.attack("Roger");
     y.takeDamage(10);
 
-    FragTrap z;
+    ScavTrap z;
+    z.attack("Creeper");
     z.beRepaired(10);
     z.takeDamage(120);
     z.beRepaired(20);

@@ -25,7 +25,7 @@ public:
 	ScavTrap( void);
 	ScavTrap( std::string name);
 	ScavTrap( ScavTrap &src);
-	void	get_gardGate( void)
+	void	get_gardGate( void);
 	void    attack( const std::string &target);
 
 	ScavTrap	&operator=(const ScavTrap &rhs);
