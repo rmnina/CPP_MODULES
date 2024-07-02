@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:41:49 by jdufour           #+#    #+#             */
-/*   Updated: 2024/06/30 19:21:56 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/01 23:11:36 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,27 +100,27 @@ const char	*Bureaucrat::GradeTooLowException::what( void) const throw()
 	return ("Exception caught : Grade too low");
 }
 
-void	Bureaucrat::signForm( Form *f)
+void	Bureaucrat::signForm( AForm &f)
 {
 	try
 	{
-		if (_grade > f->getSignGrade() || _grade > 150)
-			throw Form::GradeTooLowException();
+		if (_grade > f.getSignGrade() || _grade > 150)
+			throw AForm::GradeTooLowException();
 		else if (_grade < 1)
-			throw Form::GradeTooHighException();
+			throw AForm::GradeTooHighException();
 		else
 		{
-			f->setSigned(true);
-			std::cout << _name << " signed " << f->getName() << std::endl;
+			f.setSigned(true);
+			std::cout << _name << " signed " << f.getName() << std::endl;
 		}
 	}
-	catch (const Form::GradeTooLowException &e)
+	catch (const AForm::GradeTooLowException &e)
 	{
-		std::cerr << _name << " couldnt sign " << f->getName() << " because " << e.what() << std::endl;
+		std::cerr << _name << " couldnt sign " << f.getName() << " because " << e.what() << std::endl;
 	}
-	catch (const Form::GradeTooHighException &e)
+	catch (const AForm::GradeTooHighException &e)
 	{
-		std::cerr << _name << " couldnt sign " << f->getName() << " because " << e.what() << std::endl;
+		std::cerr << _name << " couldnt sign " << f.getName() << " because " << e.what() << std::endl;
 	}
 }
 

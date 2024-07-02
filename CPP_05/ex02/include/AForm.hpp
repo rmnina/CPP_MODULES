@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:48:09 by jdufour           #+#    #+#             */
-/*   Updated: 2024/06/30 22:08:51 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/01 23:14:36 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ class AForm
 		unsigned int	getSignGrade( void) const;
 		unsigned int	getExecGrade( void) const;
 		
-		void			beSigned( const Bureaucrat *b);
+		void			beSigned( const Bureaucrat &b);
 		void			setSigned( bool signature);
-		virtual void	execute( Bureaucrat const &executor) const = 0;
+		void			execute( Bureaucrat const &executor) const;
+		virtual void	exec( void) const = 0;
 	
 		class GradeTooLowException : public std::exception
 		{
@@ -55,6 +56,12 @@ class AForm
 				virtual const char	*what( void) const throw();
 		};
 
+		class FormNotSignedException : public std::exception
+		{
+			public:
+				virtual const char	*what( void) const throw();
+		};
+		
 		virtual ~AForm( void);
 };
 

@@ -6,7 +6,7 @@
 #    By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 20:10:56 by jdufour           #+#    #+#              #
-#    Updated: 2024/06/30 19:31:42 by jdufour          ###   ########.fr        #
+#    Updated: 2024/07/01 23:10:19 by jdufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = bureaucrat
 
 SRC_DIR = src
 
-SRCS = $(addprefix $(SRC_DIR)/, Bureaucrat.cpp Form.cpp main.cpp)
+SRCS = $(addprefix $(SRC_DIR)/, Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp main.cpp)
 
 OBJ_DIR = obj
 

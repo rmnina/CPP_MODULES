@@ -69,13 +69,13 @@ unsigned int	AForm::getExecGrade( void) const
 	return (this->_execGrade);
 }
 
-void	AForm::beSigned( const Bureaucrat *b)
+void	AForm::beSigned( const Bureaucrat &b)
 {
 	try
 	{
-		if (b->getGrade() > this->_signGrade || b->getGrade() > 150)
+		if (b.getGrade() > this->_signGrade || b.getGrade() > 150)
 			throw AForm::GradeTooLowException();
-		else if (b->getGrade() < 1)
+		else if (b.getGrade() < 1)
 			throw AForm::GradeTooHighException();
 		else
 			_signed = true;
@@ -90,6 +90,36 @@ void	AForm::beSigned( const Bureaucrat *b)
 	}
 }
 
+void	AForm::execute( const Bureaucrat &executor) const
+{
+	try
+	{
+		if (this->_signed)
+		{
+			if (executor.getGrade() > this->_execGrade || executor.getGrade() > 150)
+				throw AForm::GradeTooLowException();
+			else if (executor.getGrade() < 1)
+				throw AForm::GradeTooHighException();
+			else
+				this->exec();
+		}
+		else
+			throw AForm::FormNotSignedException();
+	}
+	catch (const AForm::GradeTooHighException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (const AForm::GradeTooLowException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (const AForm::FormNotSignedException &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+}	
+
 void	AForm::setSigned( bool signature)
 {
 	_signed = signature;
@@ -103,6 +133,11 @@ const char	*AForm::GradeTooLowException::what( void) const throw()
 const char	*AForm::GradeTooHighException::what( void) const throw()
 {
 	return ("Exception caught : grade too high");
+}
+
+const char	*AForm::FormNotSignedException::what( void) const throw()
+{
+	return ("Exception caught : Form not signed");
 }
 
 AForm::~AForm( void) {}

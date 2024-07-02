@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/30 20:50:06 by jdufour           #+#    #+#             */
-/*   Updated: 2024/07/01 23:13:47 by jdufour          ###   ########.fr       */
+/*   Created: 2024/07/01 15:10:35 by jdufour           #+#    #+#             */
+/*   Updated: 2024/07/02 15:41:35 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 # include <string>
 # include <iostream>
 # include <exception>
-# include <fstream>
-# include <iomanip>
 # include "AForm.hpp"
+# include <ctime>
 
-class ShrubberyCreationForm : public AForm
+class AForm;
+
+class RobotomyRequestForm : public AForm
 {
 	private:
 		std::string	_target;
 
-	public:
-		ShrubberyCreationForm( void);
-		ShrubberyCreationForm( const std::string target);
-		ShrubberyCreationForm( const ShrubberyCreationForm &src);
-		ShrubberyCreationForm	&operator=( const ShrubberyCreationForm &rhs);
+	public:	
+		RobotomyRequestForm( void);
+		RobotomyRequestForm( const std::string target);
+		RobotomyRequestForm( const RobotomyRequestForm &src);
+		RobotomyRequestForm	&operator=( const RobotomyRequestForm &rhs);
 
 		void	exec( void) const;
-
-		~ShrubberyCreationForm( void);
+		
+		class FailedToRobotomizeException : public std::exception
+		{
+			public:
+				virtual const char	*what( void) const throw();
+		};
+		
+		~RobotomyRequestForm( void);
 };
 
 #endif

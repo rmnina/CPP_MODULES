@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 18:08:25 by jdufour           #+#    #+#             */
-/*   Updated: 2024/06/30 19:38:13 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/01 23:06:12 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ unsigned int	Form::getExecGrade( void) const
 	return (this->_execGrade);
 }
 
-void	Form::beSigned( const Bureaucrat *b)
+void	Form::beSigned( const Bureaucrat &b)
 {
 	try
 	{
-		if (b->getGrade() > this->_signGrade || b->getGrade() > 150)
+		if (b.getGrade() > this->_signGrade || b.getGrade() > 150)
 			throw Form::GradeTooLowException();
-		else if (b->getGrade() < 1)
+		else if (b.getGrade() < 1)
 			throw Form::GradeTooHighException();
 		else
 			_signed = true;

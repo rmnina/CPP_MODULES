@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:21:35 by jdufour           #+#    #+#             */
-/*   Updated: 2024/06/30 19:20:31 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/01 23:05:18 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Bureaucrat
 		unsigned int	getGrade( void) const;
 		void			promote( void);
 		void			demote( void);
-		void			signForm( Form *f);
+		void			signForm( Form &f);
 
 		class	GradeTooLowException : public std::exception
 		{

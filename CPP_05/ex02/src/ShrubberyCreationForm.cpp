@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 22:05:01 by jdufour           #+#    #+#             */
-/*   Updated: 2024/06/30 22:24:55 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/01 23:27:39 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm( void) : AForm() {}
 
-ShrubberyCreationForm::ShrubberyCreationForm( const std::string target) : AForm("shrubbery", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm( const std::string target) : AForm("Shrubbery Creation Form", 145, 137)
 {
 	_target = target;
 }
@@ -30,7 +30,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=( const ShrubberyCreation
 	return (*this);
 }
 
-void	ShrubberyCreationForm::execute( const Bureaucrat &executor)
+void	ShrubberyCreationForm::exec( void) const
 {
 	std::string	filename = _target;
 	filename.append("_shrubbery");

@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:48:09 by jdufour           #+#    #+#             */
-/*   Updated: 2024/06/30 19:19:01 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/01 23:06:20 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class Form
 		bool			getSigned( void) const;
 		unsigned int	getSignGrade( void) const;
 		unsigned int	getExecGrade( void) const;
-		void			beSigned( const Bureaucrat *b);
+		void			beSigned( const Bureaucrat &b);
 		
 		void			setSigned( bool signature);
 	
