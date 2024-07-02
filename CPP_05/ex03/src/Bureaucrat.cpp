@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/16 19:41:49 by jdufour           #+#    #+#             */
-/*   Updated: 2024/07/02 18:25:44 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/02 18:27:20 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,8 +136,8 @@ void	Bureaucrat::executeForm( const AForm &form)
 				throw AForm::GradeTooHighException();
 			else
 			{
+				std::cout << _name << " executed " << form.getName() << std::endl;
 				form.exec();
-				std::cout << _name << "executed " << form.getName();
 			}
 		}
 		else
