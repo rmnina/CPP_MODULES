@@ -64,7 +64,7 @@ MateriaSource::~MateriaSource( void)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->_save != NULL)
+		if (this->_save[i] != NULL)
 			delete this->_save[i];
 	}
 }
