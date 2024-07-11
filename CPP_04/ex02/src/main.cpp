@@ -39,8 +39,9 @@ int main()
 	std::cout << BOLD << "Uncomment the last lines in main to try to instanciate AAnimal alone." << std::endl;
 	std::cout << "The compiler won't accept it." << RESET << std::endl;
 
-	// AAnimal animal;
-	// animal.makeSound();
+	// AAnimal *animal = new AAnimal();
+	// animal->makeSound();
+	// delete animal;
 
 	return (0);
 }

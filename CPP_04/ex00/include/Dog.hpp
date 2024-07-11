@@ -28,7 +28,7 @@ public:
 	
 	void		makeSound( void) const;
 	std::string	getType( void) const;
-	void	setType( std::string type);
+	void		setType( std::string type);
 
 	Dog	&operator=( const Dog &rhs);
 

@@ -15,6 +15,25 @@
 
 int main()
 {
+	// // Verify deep copy
+
+	// Cat	*src = new Cat();
+	// Cat	*cpy = new Cat(*src);
+	// int	j = 0;
+
+	// std::cout << ORANGE << "src first idea : " << src->get_idea(&j) << RESET << std::endl;
+	// std::cout << ORANGE << "cpy first idea : " << cpy->get_idea(&j) << RESET << std::endl;
+	
+	// std::cout << "Modifing src first idea..." << std::endl;
+	// src->set_idea( &j, "I am a cat !!");
+	
+	// std::cout << ORANGE << "src first idea : " << src->get_idea(&j) << RESET << std::endl;
+	// std::cout << ORANGE << "cpy first idea : " << cpy->get_idea(&j) << RESET << std::endl;
+
+	// delete src;
+	// std::cout << ORANGE << "cpy first idea : " << cpy->get_idea(&j) << RESET << std::endl;
+	// delete cpy;
+
 	Animal	*AnimalTab[10];
 	int		i = 0;
 

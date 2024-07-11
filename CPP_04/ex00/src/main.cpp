@@ -16,6 +16,24 @@
 
 int main()
 {
+	// // Verify Deep copy
+
+	// Dog	*src = new Dog();
+	// Dog	*cpy = new Dog(*src);
+
+	// std::cout << src->getType() << std::endl;
+	// std::cout << cpy->getType() << std::endl;
+
+	// src->setType("Cat");
+
+	// std::cout << src->getType() << std::endl;
+	// std::cout << cpy->getType() << std::endl;
+
+	// delete src;
+	// cpy->makeSound();
+
+	// delete cpy;
+
 	std::cout << BOLD << "Here we can see all the constructors." << RESET << std::endl;
 	
 	const Animal* meta = new Animal();
@@ -29,7 +47,7 @@ int main()
 	
 	std::cout << std::endl << BOLD << "We call makeSound(). Each animal will make its own sound." << RESET << std::endl;
 	
-	i->makeSound(); //will output the cat sound!
+	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
 
@@ -50,7 +68,7 @@ int main()
 	
 	std::cout << std::endl << BOLD << "We call makeSound(). This time, the WrongCat is not gonna make its right noise..." << RESET << std::endl;
 
-	wrong_i->makeSound(); //will output the cat sound!
+	wrong_i->makeSound();
 	wrong_meta->makeSound();
 
 	std::cout << std::endl << BOLD << "We're done with this weird zoo..." << RESET << std::endl;

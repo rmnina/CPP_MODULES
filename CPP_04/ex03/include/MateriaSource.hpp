@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef MATERIASOURCE_HPP
-# define MATERIASOUCE_HPP
+# define MATERIASOURCE_HPP
 
 # include "Materia.hpp"
 # include <iostream>
