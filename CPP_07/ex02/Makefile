@@ -6,7 +6,7 @@
 #    By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/12 17:57:02 by jdufour           #+#    #+#              #
-#    Updated: 2024/07/18 16:42:50 by jdufour          ###   ########.fr        #
+#    Updated: 2024/07/18 19:09:22 by jdufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = array
 
 SRC_DIR = src
 
-SRCS = $(addprefix $(SRC_DIR)/, Array.cpp main.cpp)
+SRCS = $(addprefix $(SRC_DIR)/, main.cpp)
 
 OBJ_DIR = obj
 

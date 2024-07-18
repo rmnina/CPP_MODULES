@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:57:37 by jdufour           #+#    #+#             */
-/*   Updated: 2024/07/18 17:08:51 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/18 19:11:11 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ class Array
 		~Array( void);
 };
 
+# include "Array.tpp"
 
 #endif

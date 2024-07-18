@@ -6,12 +6,11 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 16:21:50 by jdufour           #+#    #+#             */
-/*   Updated: 2024/07/18 17:55:32 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/18 19:08:34 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Array.hpp"
-#include "Array.cpp"
 
 int main(int, char**)
 {
