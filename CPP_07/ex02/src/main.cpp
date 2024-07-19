@@ -6,13 +6,13 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 16:21:50 by jdufour           #+#    #+#             */
-/*   Updated: 2024/07/18 19:08:34 by jdufour          ###   ########.fr       */
+/*   Updated: 2024/07/19 02:37:29 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/Array.hpp"
 
-int main(int, char**)
+int main(void)
 {
 	std::cout << RED BOLD<< "Preliminary tests : " << RESET RED ITALIC << std::endl << std::endl;
 	Array<int>	numbers(10);
