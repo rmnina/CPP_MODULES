@@ -16,7 +16,7 @@ int	main( void)
 {
 	Data		data;
 	Data		*new_data;
-	uintptr_t	ptr;
+	__intptr_t	ptr;
 
 	data.i = 42;
 	data.f = 1337.0f;

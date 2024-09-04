@@ -17,6 +17,7 @@
 # include <iostream>
 # include <ctime>
 # include <exception>
+# include <typeinfo>
 
 class Base
 {

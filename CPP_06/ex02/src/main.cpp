@@ -19,5 +19,6 @@ int	main(void)
 
 	identify(baseptr);
 	identify(baseref);
+	delete baseptr;
 	return (0);
 }
