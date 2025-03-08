@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:59:16 by jdufour           #+#    #+#             */
-/*   Updated: 2024/08/07 20:46:53 by jdufour          ###   ########.fr       */
+/*   Updated: 2025/03/08 17:09:31 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string>
 # include <fstream>
 # include <exception>
+# include <cstring>
 
 class	BitcoinExchange
 {
@@ -33,9 +34,9 @@ class	BitcoinExchange
 		
 		void	parseData( void);
 		void	parseInput( void);
-		void	getErrDate( const char *line, int i);
-		void	getErrFormatDatabase( const char *line, int i);
-		void	getErrFormatInput( const char *line, int i);
+		void	getErrDate( std::string line, int i);
+		void	getErrFormatDatabase( std::string line, int i);
+		void	getErrFormatInput( std::string line, int i);
 
 		class	ParsingErrorException : public std::exception
 		{

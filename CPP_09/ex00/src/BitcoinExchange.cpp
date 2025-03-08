@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:59:19 by jdufour           #+#    #+#             */
-/*   Updated: 2024/08/07 21:30:38 by jdufour          ###   ########.fr       */
+/*   Updated: 2025/03/08 17:14:17 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	BitcoinExchange::parseData( void)
 		{
 			BitcoinExchange::getErrFormatDatabase(line.c_str(), i);
 			if (i > 0)
-				_map[strndup(line.c_str(), 10)] = atof(line.c_str() + 11);
+				_map[line.substr(0, 10)] = atof(line.c_str() + 11);
 		}
 		catch (const BitcoinExchange::ParsingErrorException &e)
 		{
@@ -69,7 +69,7 @@ void	BitcoinExchange::parseInput( void)
 
 	try
 	{
-		input.open(_filename);
+		input.open(_filename.c_str());
 	}
 	catch (const std::ifstream::failure &e)
 	{
@@ -80,7 +80,7 @@ void	BitcoinExchange::parseInput( void)
 		try
 		{
 			if (!line.empty())
-				BitcoinExchange::getErrFormatInput(line.c_str(), i);
+				BitcoinExchange::getErrFormatInput(line, i);
 			if (i > 0)
 			{
 				std::string								date(line, 0, 10); 
@@ -90,9 +90,9 @@ void	BitcoinExchange::parseInput( void)
 				{
 					it = _map.lower_bound(date);
 					if (it == _map.end())
-						throw BitcoinExchange::ParsingErrorException("Date too recent to retrieve an accurate exchange rate -> " + std::string(line, 0, 10), i);
+						throw BitcoinExchange::ParsingErrorException("Date too recent to retrieve an accurate exchange rate -> " + line.substr(0, 10), i);
 					else if (it == _map.begin())
-						throw BitcoinExchange::ParsingErrorException("Date too old : data starts from 2009-01-02 -> " + std::string(line, 0, 10), i);
+						throw BitcoinExchange::ParsingErrorException("Date too old : data starts from 2009-01-02 -> " + line.substr(0, 10), i);
 					else
 						--it;
 				}
@@ -106,53 +106,53 @@ void	BitcoinExchange::parseInput( void)
 	}
 }
 
-void	BitcoinExchange::getErrFormatInput( const char *line, int line_nb)
+void	BitcoinExchange::getErrFormatInput( std::string line, int line_nb)
 {
 	if (line_nb > 0)
 	{
-		if (line && strlen(line) < 14)
+		if (!line.empty() && line.size() < 14)
 			throw BitcoinExchange::ParsingErrorException("Missing data on this line -> " + std::string(line), line_nb);
-		if (line[4] != '-' || line[7] != '-' || strncmp(line + 10, " | ", 3))
+		if (line[4] != '-' || line[7] != '-' || line.compare(10, 3, " | "))
 			throw BitcoinExchange::ParsingErrorException("Bad format. Try : YYYY-MM-DD | [quantity] -> " + std::string(line), line_nb);
-		if (!is_int(line + 13) && !is_double(line + 13))
-			throw BitcoinExchange::ParsingErrorException("Invalid number format -> " + std::string(line + 13), line_nb);
-		if (atol(line + 13) < 0 || atol(line + 13) > 1000)
-			throw BitcoinExchange::ParsingErrorException("Quantity should be between 0 and 1000 -> " + std::string(line + 13), line_nb);
+		if (!is_int(line.substr(13, line.size() - 13).c_str()) && !is_double(line.substr(13, line.size() - 13).c_str()))
+			throw BitcoinExchange::ParsingErrorException("Invalid number format -> " + line.substr(13, line.size() - 13), line_nb);
+		if (atol(line.substr(13, line.size() - 13).c_str()) < 0 || atol(line.substr(13, line.size() - 13).c_str()) > 1000)
+			throw BitcoinExchange::ParsingErrorException("Quantity should be between 0 and 1000 -> " + line.substr(13, line.size() - 13), line_nb);
 		BitcoinExchange::getErrDate(line, line_nb);
 	}
 }
 
-void	BitcoinExchange::getErrFormatDatabase( const char *line, int line_nb)
+void	BitcoinExchange::getErrFormatDatabase( std::string line, int line_nb)
 {
 	if (line_nb > 0)
 	{
-		if (line && strlen(line) < 12)
+		if (!line.empty() && line.size() < 12)
 			throw BitcoinExchange::ParsingErrorException("Missing data on this line -> " + std::string(line), line_nb);
 		if (line[4] != '-' || line[7] != '-' || line[10] != ',')
 			throw BitcoinExchange::ParsingErrorException("Bad format. Try : YYYY-MM-DD,[exchange_rate] -> " + std::string(line), line_nb);
-		if (!is_int(line + 11) && !is_double(line + 11))
-			throw BitcoinExchange::ParsingErrorException("Invalid number format -> " + std::string(line + 11), line_nb);
-		if (atol(line + 11) < 0 || atol(line + 11) > 66064)
-			throw BitcoinExchange::ParsingErrorException("I don't think the bitcoin prices went this crazy... -> " + std::string(line + 11), line_nb);
+		if (!is_int(line.substr(11, line.size() - 11).c_str()) && !is_double(line.substr(11, line.size() - 11).c_str()))
+			throw BitcoinExchange::ParsingErrorException("Invalid number format -> " + line.substr(11, line.size() - 11), line_nb);
+		if (atol(line.substr(11, line.size() - 11).c_str()) < 0 || atol(line.substr(11, line.size() - 11).c_str()) > 66064)
+			throw BitcoinExchange::ParsingErrorException("I don't think the bitcoin prices went this crazy... -> " + line.substr(11, line.size() - 11), line_nb);
 		BitcoinExchange::getErrDate(line, line_nb);
 	}
 }
 
-void	BitcoinExchange::getErrDate( const char *line, int line_nb)
+void	BitcoinExchange::getErrDate( std::string line, int line_nb)
 {
-		long int year = atol(strndup(line, 4));
+		long int year = atol(line.substr(0, 4).c_str());
 		if (year < 2009 || year > 2022)
-			throw BitcoinExchange::ParsingErrorException("Invalid date : No data out of the 2009 - 2022 range -> " + std::string(strndup(line, 10)), line_nb);
-		long int month = atol(strndup(line + 5, 2));
+			throw BitcoinExchange::ParsingErrorException("Invalid date : No data out of the 2009 - 2022 range -> " + line.substr(0, 10), line_nb);
+		long int month = atol(line.substr(5, 2).c_str());
 		if (month < 1 || month > 12)
-			throw BitcoinExchange::ParsingErrorException("Invalid date : did you just invented a month?? -> " + std::string(strndup(line, 10)), line_nb);
-		long int day = atol(strndup(line + 8, 2));
+			throw BitcoinExchange::ParsingErrorException("Invalid date : did you just invented a month?? -> " + line.substr(0, 10), line_nb);
+		long int day = atol(line.substr(8, 2).c_str());
 		if (day < 1 || day > 31)
-			throw BitcoinExchange::ParsingErrorException("Invalid date : I'm not sure this date exists... -> " + std::string(strndup(line, 10)), line_nb);
+			throw BitcoinExchange::ParsingErrorException("Invalid date : I'm not sure this date exists... -> " + line.substr(0, 10), line_nb);
 		if ((year % 4 && month == 2 && day > 28) || (!(year % 4) && month == 2 && day > 29))
-			throw BitcoinExchange::ParsingErrorException("Invalid date : you sure about this february thing ? -> " + std::string(strndup(line, 10)), line_nb);
+			throw BitcoinExchange::ParsingErrorException("Invalid date : you sure about this february thing ? -> " + line.substr(0, 10), line_nb);
 		if ((month <= 7 && !(month % 2) && day > 30) || (month > 7 && month % 2 && day > 30))
-			throw BitcoinExchange::ParsingErrorException("Invalid date : this month doesn't have a 31st... -> " + std::string(strndup(line, 10)), line_nb);
+			throw BitcoinExchange::ParsingErrorException("Invalid date : this month doesn't have a 31st... -> " + line.substr(0, 10), line_nb);
 }
 
 const char	*BitcoinExchange::ParsingErrorException::what( void) const throw()
