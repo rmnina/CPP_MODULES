@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:54:32 by jdufour           #+#    #+#             */
-/*   Updated: 2025/03/08 21:32:04 by jdufour          ###   ########.fr       */
+/*   Updated: 2025/03/08 22:04:19 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@
 # define BLUE		"\x1b[34m"
 # define BOLD		"\x1b[1m"
 # define ITALIC		"\x1b[3m"
+
+std::string		rmColor(std::string nb)
+{
+	std::string	clear;
+	size_t		pos;
+
+	pos = nb.find_last_of('m');
+	if (pos == std::string::npos)
+		return (nb);
+	pos += 1;
+	clear = nb.substr(pos, nb.size() - pos);
+	return (clear);
+}
 
 std::vector<int>	parseVector(std::string output)
 {
@@ -43,6 +56,7 @@ std::vector<int>	parseVector(std::string output)
 			nb += portion[i];
 			i++;
 		}
+		nb = rmColor(nb);
 		vector.push_back(std::atol(nb.c_str()));
 	}
 	return (vector);
@@ -70,15 +84,17 @@ std::vector<int>	parseDeque(std::string output)
 			nb += portion[i];
 			i++;
 		}
+		nb = rmColor(nb);
 		deque.push_back(std::atol(nb.c_str()));
 	}
 	return (deque);
 }
 
-void	checkSort(std::string output)
+bool	checkSort(std::string output)
 {
 	std::vector<int>	vector, deque;
 	int					tmp = 0;
+	bool				oopsie = false;
 
 	vector = parseVector(output);
 	deque = parseDeque(output);
@@ -86,19 +102,32 @@ void	checkSort(std::string output)
 	for (std::vector<int>::iterator it = vector.begin(); it < vector.end(); ++it)
 	{
 		if (*it < tmp)
-			throw (std::logic_error("ERROR : VECTOR IS NOT SORTED"));
+		{
+			std::cout << RED BOLD << "ERROR : VECTOR IS NOT SORTED" << std::endl;
+			oopsie = true;
+			break;
+		}
 		tmp = *it;
 	}
-	std::cout << GREEN << "VECTOR : " << BOLD << "OK" << RESET << std::endl;
+	if (!oopsie)
+		std::cout << GREEN << "VECTOR : " << BOLD << "OK" << RESET << std::endl;
+	
 	tmp = 0;
-
+	oopsie = false;
+	
 	for (std::vector<int>::iterator it = deque.begin(); it < deque.end(); ++it)
 	{
 		if (*it < tmp)
-			throw (std::logic_error("ERROR : DEQUE IS NOT SORTED"));
+		{
+			std::cout << RED BOLD << "ERROR : VECTOR IS NOT SORTED" << std::endl;
+			oopsie = true;
+			break;
+		}
 		tmp = *it;
 	}
-	std::cout << GREEN << "DEQUE : " << BOLD << "OK" << RESET << std::endl;
+	if (!oopsie)
+		std::cout << GREEN << "DEQUE : " << BOLD << "OK" << RESET << std::endl;
+	return (oopsie);
 }
 
 int main()
@@ -115,15 +144,9 @@ int main()
 	if (output.empty())
 		return (1);
 	std::cout << BLUE BOLD ITALIC << "\nChecking if the values are, INDEED, sorted..." << RESET << std::endl;
-	try
-	{
-		checkSort(output);
+	if (!checkSort(output))
 		std::cout << BLUE BOLD ITALIC << "All good hehe 😎" << RESET << std::endl;
-	}
-	catch (const std::logic_error &e)
-	{
-		std::cout << RED BOLD << e.what() << RESET << std::endl;
+	else
 		std::cout << BLUE BOLD ITALIC << "Oh nooooooo 😵" << RESET << std::endl;
-	}
 	return (0);
 }
