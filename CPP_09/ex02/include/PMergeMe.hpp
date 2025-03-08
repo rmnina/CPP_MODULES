@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 17:12:06 by jdufour           #+#    #+#             */
-/*   Updated: 2024/08/14 02:41:28 by jdufour          ###   ########.fr       */
+/*   Updated: 2025/03/08 19:43:40 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ class PMergeMe
 		std::deque<std::deque<int> >	split( std::deque<int> &a);
 
 /************************ ALGO ************************/
-		void	mergeInsertVector( void);
-		void	mergeInsertDeque( void);
-		void	mergeInsert( void);
+		
+		std::vector<int>	jacobsthal_seq(int n);
+		void				mergeInsertVector( void);
+		void				mergeInsertDeque( void);
+		void				mergeInsert( void);
 		
 };
 

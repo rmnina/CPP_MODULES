@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 01:46:12 by jdufour           #+#    #+#             */
-/*   Updated: 2024/08/14 02:41:23 by jdufour          ###   ########.fr       */
+/*   Updated: 2025/03/08 19:48:05 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,37 @@ PMergeMe	&PMergeMe::operator=( const PMergeMe &rhs)
 	return (*this);
 }
 
+std::vector<int>	PMergeMe::jacobsthal_seq(int n)
+{
+	std::vector<int>sequence;
+	sequence.push_back(0);
+	sequence.push_back(1);
+	
+	for (int i = 2; i < n; ++i)
+	{
+		int	next = sequence[i-1] + 2 * sequence[i-2];
+		sequence.push_back(next);
+	}
+
+	return (sequence);
+}
+
 std::deque<std::deque<int> >	PMergeMe::split( std::deque<int> &a)
 {
-	std::deque<std::deque<int> >	d_array;
-	for (std::deque<int>::iterator it = a.begin(); it < a.end(); it += GP_SIZE)
+	std::deque<std::deque<int> > d_array;
+	std::vector<int> jacobsthal = jacobsthal_seq(static_cast<int>(a.size()));
+
+	size_t start = 0;
+	for (size_t i = 0; i < jacobsthal.size() && start < a.size(); ++i)
 	{
-		std::deque<int>	temp;
-		if (it + GP_SIZE < a.end())
-			temp.assign(it, it + GP_SIZE);
-		else
-			temp.assign(it, a.end());
+		size_t end = std::min(static_cast<int>(start) + jacobsthal[i], static_cast<int>(a.size()));
+		std::deque<int> temp(a.begin() + start, a.begin() + end);
+		d_array.push_back(temp);
+		start = end;
+	}
+	if (start < a.size())
+	{
+		std::deque<int> temp(a.begin() + start, a.end());
 		d_array.push_back(temp);
 	}
 	return (d_array);
@@ -59,14 +80,20 @@ std::deque<std::deque<int> >	PMergeMe::split( std::deque<int> &a)
 
 std::vector<std::vector<int> >	PMergeMe::split( std::vector<int> &a)
 {
-	std::vector<std::vector<int> >	v_array;
-	for (std::vector<int>::iterator it = a.begin(); it < a.end(); it += GP_SIZE)
+	std::vector<std::vector<int> > v_array;
+	std::vector<int> jacobsthal = jacobsthal_seq(static_cast<int>(a.size()));
+
+	size_t start = 0;
+	for (size_t i = 0; i < jacobsthal.size() && start < a.size(); ++i)
 	{
-		std::vector<int>	temp;
-		if (it + GP_SIZE < a.end())
-			temp.assign(it, it + GP_SIZE);
-		else
-			temp.assign(it, a.end());
+		size_t end = std::min(static_cast<int>(start) + jacobsthal[i], static_cast<int>(a.size()));
+		std::vector<int> temp(a.begin() + start, a.begin() + end);
+		v_array.push_back(temp);
+		start = end;
+	}
+	if (start < a.size())
+	{
+		std::vector<int> temp(a.begin() + start, a.end());
 		v_array.push_back(temp);
 	}
 	return (v_array);	
@@ -131,37 +158,41 @@ template <typename Container> void	PMergeMe::insertStraggler( Container &a, int 
 
 void	PMergeMe::mergeInsertVector( void)
 {
-	std::vector<std::vector<int> >	v_array;
-	int								straggler = -1;
+	std::vector<std::vector<int> > v_array;
+	int straggler = -1;
 
 	std::cout << BOLD BLUE << "[std::vector] before : " << RESET BLUE << std::endl;
 	for (std::vector<int>::iterator it = _vector.begin(); it != _vector.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << RESET << std::endl;
+
 	if (_vector.size() % GP_SIZE == 1)
 	{
 		straggler = *(_vector.end() - 1);
 		_vector.pop_back();
 	}
-    if (!_vector.empty())
-    {
-	    v_array = split(_vector);
-	    for (std::vector<std::vector<int> >::iterator it = v_array.begin(); it < v_array.end(); ++it)
-	    	PMergeMe::insert(*it);
-	    while (v_array.size() > 1)
-	    {
-	    	for (std::vector<std::vector<int> >::iterator it = v_array.begin(); it + 1 < v_array.end(); ++it)
-	    	{
-	    		std::vector<int>	temp = PMergeMe::merge(*it++, *it);
-	    		v_array.erase(it--);
-	    		v_array.erase(it);
-	    		v_array.push_back(temp);
-	    	}
-	    }
-	    _vector = v_array[0];
-    }
+
+	if (!_vector.empty())
+	{
+		v_array = split(_vector);
+
+		for (std::vector<std::vector<int> >::iterator it = v_array.begin(); it != v_array.end(); ++it)
+			PMergeMe::insert(*it);
+
+		while (v_array.size() > 1)
+		{
+			std::vector<int> temp = PMergeMe::merge(v_array[0], v_array[1]);
+			v_array.erase(v_array.begin());
+			v_array.erase(v_array.begin());
+			v_array.push_back(temp);
+		}
+
+		_vector = v_array[0];
+	}
+
 	if (straggler != -1)
 		insertStraggler(_vector, straggler);
+
 	std::cout << BOLD PINK << "[std::vector] after : " << RESET PINK << std::endl;
 	for (std::vector<int>::iterator it = _vector.begin(); it != _vector.end(); ++it)
 		std::cout << *it << " ";
@@ -177,27 +208,33 @@ void	PMergeMe::mergeInsertDeque( void)
 	for (std::deque<int>::iterator it = _deque.begin(); it != _deque.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << RESET << std::endl;
+
 	if (_deque.size() % GP_SIZE == 1)
 	{
 		straggler = *(_deque.end() - 1);	
 		_deque.pop_back();
 	}
-    if (!_deque.empty())
-    {
-	    d_array = split(_deque);
-	    for (std::deque<std::deque<int> >::iterator it = d_array.begin(); it < d_array.end(); ++it)
-	    	PMergeMe::insert(*it);
-	    while (d_array.size() > 1)
-	    {
-	    	std::deque<int>	temp = PMergeMe::merge(d_array[0], d_array[1]);
-	    	d_array.pop_front();
-	    	d_array.pop_front();
-	    	d_array.push_back(temp);
-	    }
-	    _deque = d_array[0];
-    }
+
+	if (!_deque.empty())
+	{
+		d_array = split(_deque);
+
+		for (std::deque<std::deque<int> >::iterator it = d_array.begin(); it < d_array.end(); ++it)
+			PMergeMe::insert(*it);
+	
+		while (d_array.size() > 1)
+		{
+			std::deque<int>	temp = PMergeMe::merge(d_array[0], d_array[1]);
+			d_array.pop_front();
+			d_array.pop_front();
+			d_array.push_back(temp);
+		}
+		_deque = d_array[0];
+	}
+
 	if (straggler != -1)
 		insertStraggler(_deque, straggler);
+
 	std::cout << BOLD PINK << "[std::deque] after : " << RESET PINK << std::endl;
 	for (std::deque<int>::iterator it = _deque.begin(); it != _deque.end(); ++it)
 		std::cout << *it << " ";

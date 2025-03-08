@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 16:25:06 by jdufour           #+#    #+#             */
-/*   Updated: 2024/08/14 02:41:32 by jdufour          ###   ########.fr       */
+/*   Updated: 2025/03/08 20:37:40 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 		PMergeMe	data(argv + 1);
 		data.mergeInsert();
 	}
-	catch(const std::runtime_error& e)
+	catch(const std::runtime_error &e)
 	{
 		std::cerr << BOLD RED << e.what() << RESET << std::endl;
 	}
