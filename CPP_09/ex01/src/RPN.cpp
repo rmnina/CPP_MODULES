@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 21:45:25 by jdufour           #+#    #+#             */
-/*   Updated: 2024/07/25 00:51:53 by jdufour          ###   ########.fr       */
+/*   Updated: 2025/03/08 18:06:04 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void	RPN::add( void)
 {
 	int	result = _stack.top();
 	_stack.pop();
+	if (_stack.empty())
+		throw (std::runtime_error("Error: Invalid notation -> Not enough operandes left to apply operators."));
 	result += _stack.top();
 	_stack.pop();
 	_stack.push(result);
@@ -74,6 +76,8 @@ void	RPN::substract( void)
 {
 	int	result = _stack.top();
 	_stack.pop();
+	if (_stack.empty())
+		throw (std::runtime_error("Error: Invalid notation -> Not enough operandes left to apply operators."));
 	result = _stack.top() - result;
 	_stack.pop();
 	_stack.push(result);	
@@ -83,6 +87,8 @@ void	RPN::multiply( void)
 {
 	int result = _stack.top();
 	_stack.pop();
+	if (_stack.empty())
+		throw (std::runtime_error("Error: Invalid notation -> Not enough operandes left to apply operators."));
 	result *= _stack.top();
 	_stack.pop();
 	_stack.push(result);
@@ -94,6 +100,8 @@ void	RPN::divide( void)
 	if (result == 0)
 		throw (std::runtime_error("Error : div by 0"));
 	_stack.pop();
+	if (_stack.empty())
+		throw (std::runtime_error("Error: Invalid notation -> Not enough operandes left to apply operators."));
 	result = _stack.top() / result;
 	_stack.pop();
 	_stack.push(result);		

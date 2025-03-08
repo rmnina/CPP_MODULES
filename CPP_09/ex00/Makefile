@@ -6,7 +6,7 @@
 #    By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/18 19:01:05 by jdufour           #+#    #+#              #
-#    Updated: 2025/03/08 17:13:47 by jdufour          ###   ########.fr        #
+#    Updated: 2025/03/08 18:01:10 by jdufour          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ OBJ = $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CXX = c++
 
-CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -rfv
 
