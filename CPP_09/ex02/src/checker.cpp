@@ -6,7 +6,7 @@
 /*   By: jdufour <jdufour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:54:32 by jdufour           #+#    #+#             */
-/*   Updated: 2025/03/08 22:04:19 by jdufour          ###   ########.fr       */
+/*   Updated: 2025/03/08 22:22:46 by jdufour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ bool	checkSort(std::string output)
 	{
 		if (*it < tmp)
 		{
-			std::cout << RED BOLD << "ERROR : VECTOR IS NOT SORTED" << std::endl;
+			std::cout << RED BOLD << "ERROR : DEQUE IS NOT SORTED" << std::endl;
 			oopsie = true;
 			break;
 		}
